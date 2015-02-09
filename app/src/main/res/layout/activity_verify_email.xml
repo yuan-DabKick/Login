@@ -1,0 +1,121 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@android:color/white"
+    tools:context="com.dabkick.developer3.login.VerifyPhone">
+
+    <RelativeLayout
+        android:id="@+id/verifyLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/verifyDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/x_delete_photo_v70"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"/>
+
+        <TextView
+            android:layout_width="290dp"
+            android:layout_height="35dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="91dp"
+            android:gravity="center"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/verify_your_email"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="142dp"
+            android:src="@drawable/verify_email_icon_v70" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="290dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="200dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:fontFamily="sans-serif-light"
+            android:textSize="18dp"
+            />
+
+        <TextView
+            android:layout_width="290dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="251dp"
+            android:gravity="center"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/verify_email_description"
+            android:textSize="15dp" />
+
+        <!--go bar-->
+        <LinearLayout
+            android:id="@+id/goBar"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/goBarHeight"
+            android:layout_alignParentBottom="true">
+
+            <!--left area-->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="2.2"
+                android:background="@color/lightBlueColor">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="sans-serif-light"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/verify_your_email"
+                    android:textColor="@android:color/white"
+                    android:textSize="20dp" />
+
+            </RelativeLayout>
+
+            <!--right area-->
+            <RelativeLayout
+                android:id="@+id/goButton"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@color/goBackgroundColor">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="sans-serif-light"
+                    android:text=">>>"
+                    android:textColor="@android:color/white"
+                    android:textSize="20dp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
+

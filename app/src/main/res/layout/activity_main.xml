@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    >
+
+    <TextView
+        android:id="@+id/mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="20dp"
+        android:text="verify_Email"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+
+        android:gravity="center"
+        android:background="@android:color/black"
+        android:alpha="0.4"
+        android:layout_alignParentBottom='true'
+        >
+
+        <TextView android:text="@string/signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="12.5dp"
+            android:paddingRight="@dimen/textPaddingLeftRight"
+            android:background="@android:color/transparent"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:id="@+id/signupBtn" />
+
+        <TextView android:text="@string/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12.5dp"
+            android:paddingLeft="@dimen/textPaddingLeftRight"
+            android:background="@android:color/transparent"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:id="@+id/loginBtn" />
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

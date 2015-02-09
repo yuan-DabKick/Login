@@ -1,0 +1,238 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.dabkick.developer3.login.LoginActivity">
+
+    <!--header-->
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/headerBarHeight"
+        android:layout_alignParentTop="true"
+        android:background="@color/headerColor">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/login"
+            android:textSize="@dimen/headerTextSize" />
+
+        <ImageView
+            android:id="@+id/dismissBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/x_delete_photo_v70" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/loginScrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="@dimen/headerBarHeight"
+        android:background="@android:color/white"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingBottom="450dp">
+
+            <!--field layout-->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="25dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/emailField"
+                    android:layout_width="fill_parent"
+                    android:layout_height="35dp"
+                    android:background="@null"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/email"
+                    android:inputType="text"
+                    android:textColorHint="@color/hintLightGray"
+                    android:textSize="@dimen/editFieldTextSize" />
+
+                <!--seperator line-->
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/fieldUnderLineColor" />
+
+                <!--email warning-->
+                <TextView
+                    android:id="@+id/emailWarning"
+                    android:layout_width="fill_parent"
+                    android:layout_height="20dp"
+                    android:text="@string/emailWarning"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:gravity="center"
+                    android:textStyle="italic"
+                    android:visibility="invisible" />
+
+                <!--password field-->
+                <EditText
+                    android:id="@+id/passwordField"
+                    android:layout_width="fill_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@null"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:textColorHint="@color/hintLightGray"
+                    android:textSize="@dimen/editFieldTextSize" />
+
+                <!--seperator line-->
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/fieldUnderLineColor" />
+
+                <!--password warning-->
+                <TextView
+                    android:id="@+id/passwordWarning"
+                    android:layout_width="fill_parent"
+                    android:layout_height="20dp"
+                    android:text="@string/passwordWarning"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textStyle="italic"
+                    android:gravity="center"
+                    android:visibility="invisible" />
+
+                <!--forget password text-->
+                <TextView
+                    android:id="@+id/forgotTextView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="@string/forgotPassword"
+                    android:textColor="@color/lightBlueColor"
+                    android:textSize="17dp"
+                    android:textStyle="italic" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+    <!--go bar-->
+    <LinearLayout
+        android:id="@+id/goBar"
+        android:visibility="invisible"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/goBarHeight"
+        android:layout_alignParentBottom="true">
+
+        <!--left area-->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="2.2"
+            android:background="@color/lightBlueColor">
+
+            <!--text container-->
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <!--first line text-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="@string/agreeNote1"
+                    android:textColor="@android:color/white"
+                    android:textSize="11dp" />
+
+                <!--second line-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="5dp"
+                        android:text="@string/agreeNote2"
+                        android:textColor="@android:color/white"
+                        android:textSize="11dp" />
+
+                    <TextView
+                        android:id="@+id/termOfServiceLink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:text="@string/termOfService"
+                        android:textColor="@android:color/white"
+                        android:textSize="11dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <!--right area-->
+        <LinearLayout
+            android:id="@+id/goButton"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@color/goBackgroundColor">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:paddingRight="5dp"
+                android:text="@string/go"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="5dp"
+                android:text=">>>"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

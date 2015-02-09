@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Login</string>
+    <string name="login">login</string>
+    <string name="signup">signup</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">login</string>
+    <string name="title_activity_signup">signup</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="password">password</string>
+    <string name="email">email</string>
+    <string name="name">name</string>
+    <string name="forgotPassword">forgot your password?</string>
+    <string name="go">go</string>
+    <string name="agreeNote1">by entering you agree to</string>
+    <string name="agreeNote2">dabkick\'s </string>
+    <string name="termOfService">terms of service</string>
+    <string name="emailWarning">not a valid email address</string>
+    <string name="passwordWarning">password should not be empty</string>
+    <string name="nameWarning">name should be more than two letters</string>
+    <string name="createPassword">create password</string>
+    <string name="title_activity_profile_picture">ProfilePictureActivity</string>
+    <string name="setYourProfilePicture">set your profile picture\nso friends can see you</string>
+    <string name="chooseFromAlbums">choose from albums</string>
+    <string name="discard">discard</string>
+    <string name="use">use</string>
+    <string name="title_activity_start_dabbing">StartDabbing</string>
+    <string name="welcome">W E L C O M E</string>
+    <string name="EMAIL">E M A I L</string>
+    <string name="startDabbing">start dabbing</string>
+    <string name="title_activity_verify_phone">VerifyPhone</string>
+    <string name="verify_your_phone">verify your phone</string>
+    <string name="verify_phone_description">so friends can connect\nwith you via DabKick using\nyour verified number</string>
+    <string name="just_a_moment">just a moment</string>
+    <string name="verifyingDescription">we\'re verifying your\nphone number now</string>
+    <string name="is_this_your_number">Is this your number?</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
+    <string name="now_friend_can_dab">now friends can\ndab you using your\nphone number</string>
+    <string name="got_it">got it</string>
+    <string name="title_activity_forgot_password">ForgotPassword</string>
+    <string name="send_you_new_one">we\'ll send you a new one</string>
+    <string name="send">send</string>
+    <string name="password_reset">password reset</string>
+    <string name="password_reset_description">We just emailed you\na new password.\nCheck your spam folder\nif you don\'t see it.</string>
+    <string name="OK">OK</string>
+    <string name="title_activity_verify_email">VerifyEmail</string>
+    <string name="verify_your_email">verify your email</string>
+    <string name="verify_email_description">friends can connect with you\nvia DabKick using your\nverified email</string>
+
+</resources>

@@ -1,0 +1,11 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">0dp</dimen>
+    <dimen name="activity_vertical_margin">0dp</dimen>
+    <dimen name="textPaddingLeftRight">15dp</dimen>
+    <dimen name="textPaddingTopBottom">10dp</dimen>
+    <dimen name="headerBarHeight">45dp</dimen>
+    <dimen name="headerTextSize">20dp</dimen>
+    <dimen name="editFieldTextSize">20dp</dimen>
+    <dimen name="goBarHeight">60dp</dimen>
+</resources>

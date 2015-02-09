@@ -1,0 +1,136 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context="com.dabkick.developer3.login.ProfilePictureActivity">
+
+    <RelativeLayout
+        android:id="@+id/maskView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"></RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/topText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="@string/setYourProfilePicture"
+        android:textColor="@color/fieldTextColor"
+        android:textSize="20dp" />
+
+
+    <RelativeLayout
+        android:id="@+id/bottomPortion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/white">
+
+        <RelativeLayout
+            android:id="@+id/snapBtnsLayout"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/snapBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:clickable="true"
+                android:src="@drawable/snap_camera_btn_v70" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/yesNoBtnsLayout"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:visibility="invisible">
+
+            <RelativeLayout
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+
+                >
+
+                <RelativeLayout
+                    android:id="@+id/discardLayout"
+                    android:layout_width="85dp"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/discardBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/discard_gray_x_btn_v70" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/discardBtn"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/discard"
+                        android:textSize="15dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="85dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/discardLayout"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/useBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/use_red_check_btn_v70" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/useBtn"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/use"
+                        android:textSize="15sp" />
+
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/albumBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="84dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="@string/chooseFromAlbums"
+            android:textColor="@color/lightBlueColor"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

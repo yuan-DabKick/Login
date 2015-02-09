@@ -1,0 +1,307 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.dabkick.developer3.login.VerifyPhone">
+
+    <RelativeLayout
+        android:id="@+id/verifyLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/verifyDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/x_delete_photo_v70" />
+
+        <RelativeLayout
+            android:id="@+id/contentLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="91dp"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:layout_width="290dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="@string/verify_your_phone"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="51dp"
+                android:src="@drawable/verify_phone_icon_v70" />
+
+            <TextView
+                android:layout_width="290dp"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="109dp"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="@string/verify_phone_description"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+
+
+        <!--go bar-->
+        <LinearLayout
+            android:id="@+id/goBar"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/goBarHeight"
+            android:layout_alignParentBottom="true">
+
+            <!--left area-->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="2.2"
+                android:background="@color/lightBlueColor">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/verify_your_phone"
+                    android:textColor="@android:color/white"
+                    android:textSize="20dp" />
+
+            </RelativeLayout>
+
+            <!--right area-->
+            <RelativeLayout
+                android:id="@+id/goButton"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@color/goBackgroundColor">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="sans-serif-light"
+                    android:text=">>>"
+                    android:textColor="@android:color/white"
+                    android:textSize="20dp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/verifying"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible">
+
+        <ImageView
+            android:id="@+id/verifyingDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/x_delete_photo_v70" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:layout_width="290dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="@string/just_a_moment"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="56dp"
+                android:src="@drawable/dabby_red_circle_v70" />
+
+            <TextView
+                android:layout_width="290dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="138dp"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="@string/verifyingDescription"
+                android:textSize="15dp" />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/verified"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:layout_width="290dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="@string/is_this_your_number"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="80dp"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="+1(650)987-6543"
+                android:textSize="27dp" />
+
+            <RelativeLayout
+                android:layout_width="154dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="160dp">
+
+                <RelativeLayout
+                    android:id="@+id/noLayout"
+                    android:layout_width="62dp"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/noImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/discard_gray_x_btn_v70" />
+
+                    <TextView
+                        android:layout_width="62dp"
+                        android:layout_height="32dp"
+                        android:layout_below="@id/noImage"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="center"
+                        android:text="@string/no" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/yesLayout"
+                    android:layout_width="62dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_toRightOf="@id/noLayout">
+
+                    <ImageView
+                        android:id="@+id/yesImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/use_red_check_btn_v70" />
+
+                    <TextView
+                        android:layout_width="62dp"
+                        android:layout_height="32dp"
+                        android:layout_below="@id/yesImage"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="center"
+                        android:text="@string/yes" />
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/gotItBox"
+        android:layout_width="200dp"
+        android:layout_height="210dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@android:color/black"
+        android:visibility="invisible">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/use_red_check_btn_v70" />
+
+        <TextView
+            android:layout_width="160dp"
+            android:layout_height="70dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="75dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="@string/now_friend_can_dab"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/gotItBtn"
+            android:layout_width="160dp"
+            android:layout_height="35dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="@string/got_it"
+            android:textColor="@color/lightBlueColor"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

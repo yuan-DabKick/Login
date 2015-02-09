@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="headerColor">#eaeaea</color>
+    <color name="headerTextColor">#4D4D4D</color>
+    <color name="fieldTextColor">#333333</color>
+    <color name="fieldUnderLineColor">#B0B0B0</color>
+    <color name="goBackgroundColor">#0573ae</color>
+    <color name="lightBlueColor">#0085E5</color>
+    <color name="hintLightGray">#E0E0E0</color>
+
+</resources>
+
+
