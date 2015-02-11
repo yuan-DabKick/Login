@@ -29,7 +29,7 @@ public class ProfilePictureActivity extends Activity implements View.OnClickList
     final static int PICK_IMAGES = 0;
 
     boolean isGlobalLayoutInitialSetup = true;
-    CameraPreview mCameraPreview;
+    CameraPreview mCameraPreview = null;
     FrameLayout mDisplayView;
 
     private RelativeLayout mRootLayout;
@@ -84,6 +84,24 @@ public class ProfilePictureActivity extends Activity implements View.OnClickList
 
         GlobalHandler.turnOffStatusBar(this);
         setupCamera();
+    }
+
+    @Override
+    public void onResume() {
+
+        super.onResume();
+
+        if (mCameraPreview != null)
+            mCameraPreview.restartCamera();
+
+    }
+
+    public void onPause(){
+        super.onPause();
+
+//        if (mCameraPreview != null)
+//            mCameraPreview.releaseCamera();
+
     }
 
     @Override
@@ -170,17 +188,19 @@ public class ProfilePictureActivity extends Activity implements View.OnClickList
     }
 
     MediaPlayer mShootMP = null;
+
     public void shootSound() {
         AudioManager meng = (AudioManager) this.getBaseContext().getSystemService(Context.AUDIO_SERVICE);
         int volume = meng.getStreamVolume(AudioManager.STREAM_NOTIFICATION);
 
         if (volume != 0) {
             if (mShootMP == null)
-            mShootMP = MediaPlayer.create(getBaseContext(), Uri.parse("file:///system/media/audio/ui/camera_click.ogg"));
+                mShootMP = MediaPlayer.create(getBaseContext(), Uri.parse("file:///system/media/audio/ui/camera_click.ogg"));
             if (mShootMP != null)
                 mShootMP.start();
         }
     }
+
 
     @Override
     public void onClick(View v) {
@@ -196,15 +216,16 @@ public class ProfilePictureActivity extends Activity implements View.OnClickList
                 mAlbumBtn.setVisibility(View.INVISIBLE);
 
                 //show result view animation
-                mResultView.setAlpha(0.0f);
-                mCameraPreview.setAlpha(0);
-                mResultView.animate().setDuration(300).alpha(1.0f);
+//                mResultView.setAlpha(0.0f);
+//                mCameraPreview.setAlpha(0);
+//                mResultView.animate().setDuration(300).alpha(1.0f);
 
                 break;
 
             case R.id.useBtn:
-                mBitMapImage = ((BitmapDrawable)mResultView.getDrawable()).getBitmap();
-                GlobalHandler.saveBitmap(this, mBitMapImage, GlobalHandler.PROFILE_PIC);
+                mBitMapImage = ((BitmapDrawable) mResultView.getDrawable()).getBitmap();
+//                GlobalHandler.saveBitmap(this, mBitMapImage, GlobalHandler.PROFILE_PIC);
+                GlobalHandler.profileBitmap = mBitMapImage;
 
                 if (GlobalHandler.isTabletSize(this)) {
                     //tablet
@@ -273,11 +294,11 @@ public class ProfilePictureActivity extends Activity implements View.OnClickList
                     mBitMapImage = BitmapFactory.decodeFile(filePath);
 
                     int width = mResultView.getWidth();
-                    int height = (int)(mBitMapImage.getHeight()*((float)mResultView.getWidth()/mBitMapImage.getWidth()));
-                    mBitMapImage = Bitmap.createScaledBitmap(mBitMapImage, width,height , false);
+                    int height = (int) (mBitMapImage.getHeight() * ((float) mResultView.getWidth() / mBitMapImage.getWidth()));
+                    mBitMapImage = Bitmap.createScaledBitmap(mBitMapImage, width, height, false);
 
                     //crop the image
-                    int startY = (mBitMapImage.getHeight()-mResultView.getHeight())/2;
+                    int startY = (mBitMapImage.getHeight() - mResultView.getHeight()) / 2;
                     if (startY > 0)
                         mBitMapImage = Bitmap.createBitmap(mBitMapImage, 0, startY, mBitMapImage.getWidth(), mResultView.getHeight());
 

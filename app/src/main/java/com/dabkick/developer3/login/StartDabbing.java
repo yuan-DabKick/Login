@@ -5,13 +5,14 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-public class StartDabbing extends Activity {
+public class StartDabbing extends Activity implements View.OnClickListener{
 
     Bitmap mImage;
     ImageView mProfileImage;
@@ -25,6 +26,8 @@ public class StartDabbing extends Activity {
     private TextView mEmail;
     private LinearLayout mGoBar;
     private RelativeLayout mGoButton;
+    private ImageView mArrowImageView;
+    private Thread mArrowThread;
 
     private void findViews() {
         mContentLayout = (RelativeLayout)findViewById( R.id.contentLayout );
@@ -33,6 +36,7 @@ public class StartDabbing extends Activity {
         mEmail = (TextView)findViewById( R.id.email );
         mGoBar = (LinearLayout)findViewById( R.id.goBar );
         mGoButton = (RelativeLayout)findViewById( R.id.goButton );
+        mArrowImageView = (ImageView)findViewById(R.id.arrowImage);
     }
 
     @Override
@@ -47,7 +51,8 @@ public class StartDabbing extends Activity {
 
         findViews();
 
-        mImage = GlobalHandler.loadBitmap(this,GlobalHandler.PROFILE_PIC);
+//        mImage = GlobalHandler.loadBitmap(this,GlobalHandler.PROFILE_PIC);
+        mImage = GlobalHandler.profileBitmap;
         mProfileImage = (ImageView)findViewById(R.id.profilePic);
         mProfileImage.setImageBitmap(mImage);
 
@@ -59,6 +64,8 @@ public class StartDabbing extends Activity {
 
         mUserName.setText(username);
         mEmail.setText(email);
+
+        mArrowThread = GlobalHandler.arrowAnimation(this,mArrowImageView);
 
     }
 
@@ -83,5 +90,15 @@ public class StartDabbing extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id){
+            case R.id.goButton:
+                GlobalHandler.finishArrowAnimation(mArrowThread);
+                break;
+        }
     }
 }

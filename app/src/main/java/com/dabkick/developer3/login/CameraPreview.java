@@ -23,11 +23,9 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     float mDisplayWidth;
     float mDisplayHeight;
     float mDiff;
-    boolean initialSetup = true;
 
     @SuppressWarnings("deprecation")
     Camera mCamera = null;
-
 
     public CameraPreview(Context context, ProfilePictureActivity activity) {
         super(context);
@@ -42,8 +40,27 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     public void surfaceCreated(SurfaceHolder holder) {
         int cameraId = Camera.CameraInfo.CAMERA_FACING_FRONT;
 
-        mCamera = Camera.open(cameraId);
+        try {
+            mCamera = Camera.open(cameraId);
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
         setFlashAuto();
+
+        try {
+            mCamera.setPreviewDisplay(mHolder);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    public void restartCamera(){
+        int cameraId = Camera.CameraInfo.CAMERA_FACING_FRONT;
+
+        mCamera = Camera.open(cameraId);
 
         try {
             mCamera.setPreviewDisplay(mHolder);
@@ -56,9 +73,6 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     @SuppressWarnings("deprecation")
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 
-        if (initialSetup == false)
-            return;
-        initialSetup = false;
 
         mCamera.setDisplayOrientation(90);
         mCamera.startPreview();
@@ -66,6 +80,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
+        mCamera.setPreviewCallback(null);
         mCamera.stopPreview();
         mCamera.release();
         mCamera = null;
@@ -78,7 +93,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             @Override
             public void onPreviewFrame(byte[] data, Camera camera) {
 
-                //mCamera.stopPreview();
+                mCamera.stopPreview();
 
                 int width = mCamera.getParameters().getPreviewSize().width;
                 int height = mCamera.getParameters().getPreviewSize().height;
@@ -98,19 +113,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
                 resultView.setImageBitmap(bmp);
 
 
-                //resultView.setAlpha(1);
-
-                //mActivity.mCameraPreview.animate().alpha(0).setDuration(4000);
                 resultView.bringToFront();
-
-//                mActivity.runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        mActivity.mCameraPreview.animate().alpha(0).setDuration(4000);
-//                    }
-//                });
-
-                //resultView.animate().alpha(1);
 
             }
         });
@@ -157,6 +160,8 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     }
 
     void resumePreview() {
+        if (mCamera == null)
+            return;
         mCamera.setDisplayOrientation(90);
         mCamera.startPreview();
     }

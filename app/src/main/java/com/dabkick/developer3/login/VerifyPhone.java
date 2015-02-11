@@ -33,6 +33,8 @@ public class VerifyPhone extends Activity implements View.OnClickListener {
     private ImageView mVerifyingDelete;
     private ImageView mVerifyDelete;
     private RelativeLayout mContentLayout;
+    private ImageView mArrowImageView;
+    private Thread mArrowThread;
 
     private void findViews() {
         mVerifyLayout = (RelativeLayout)findViewById( R.id.verifyLayout );
@@ -74,6 +76,8 @@ public class VerifyPhone extends Activity implements View.OnClickListener {
 
         mContentLayout = (RelativeLayout)findViewById(R.id.contentLayout);
 
+        mArrowImageView = (ImageView)findViewById(R.id.arrowImage);
+
     }
 
     @Override
@@ -82,6 +86,8 @@ public class VerifyPhone extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_verify_phone);
 
         findViews();
+
+        mArrowThread = GlobalHandler.arrowAnimation(this,mArrowImageView);
 
     }
 
@@ -122,6 +128,7 @@ public class VerifyPhone extends Activity implements View.OnClickListener {
                 //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("sms:"+ "9512756463")));
                 mVerifying.setVisibility(View.VISIBLE);
                 mVerifyLayout.setVisibility(View.INVISIBLE);
+                GlobalHandler.finishArrowAnimation(mArrowThread);
 
                 new Thread(new Runnable() {
                     @Override
@@ -156,21 +163,25 @@ public class VerifyPhone extends Activity implements View.OnClickListener {
             case R.id.noLayout:
                 mVerifyLayout.setVisibility(View.VISIBLE);
                 mVerified.setVisibility(View.INVISIBLE);
+                mArrowThread = GlobalHandler.arrowAnimation(VerifyPhone.this,mArrowImageView);
                 break;
 
             case R.id.gotItBtn:
+                GlobalHandler.finishArrowAnimation(mArrowThread);
                 Intent intent = new Intent(VerifyPhone.this,StartDabbing.class);
                 this.startActivity(intent);
                 this.finish();
                 break;
 
             case R.id.verifyDelete:
+                GlobalHandler.finishArrowAnimation(mArrowThread);
                 intent = new Intent(VerifyPhone.this,StartDabbing.class);
                 this.startActivity(intent);
                 this.finish();
                 break;
 
             case R.id.verifyingDelete:
+                GlobalHandler.finishArrowAnimation(mArrowThread);
                 mVerifying.setVisibility(View.INVISIBLE);
                 mVerifyLayout.setVisibility(View.VISIBLE);
                 break;

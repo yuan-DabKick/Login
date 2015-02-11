@@ -167,11 +167,10 @@
     <!--go bar-->
     <LinearLayout
         android:id="@+id/goBar"
-        android:layout_width="fill_parent"
         android:visibility="invisible"
+        android:layout_width="fill_parent"
         android:layout_height="@dimen/goBarHeight"
-        android:layout_alignParentBottom="true"
-        >
+        android:layout_alignParentBottom="true">
 
         <!--left area-->
         <RelativeLayout
@@ -196,7 +195,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:text="@string/agreeNote1"
-                    android:fontFamily="sans-serif-light"
                     android:textColor="@android:color/white"
                     android:textSize="11dp" />
 
@@ -212,7 +210,6 @@
                         android:layout_gravity="right"
                         android:layout_marginRight="5dp"
                         android:text="@string/agreeNote2"
-                        android:fontFamily="sans-serif-light"
                         android:textColor="@android:color/white"
                         android:textSize="11dp" />
 
@@ -222,7 +219,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:text="@string/termOfService"
-                        android:fontFamily="sans-serif-light"
                         android:textColor="@android:color/white"
                         android:textSize="11dp"
                         android:textStyle="bold" />
@@ -243,27 +239,40 @@
             android:layout_weight="1"
             android:background="@color/goBackgroundColor">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
                 android:gravity="right|center_vertical"
-                android:fontFamily="sans-serif-light"
-                android:paddingRight="5dp"
-                android:text="@string/go"
-                android:textColor="@android:color/white"
-                android:textSize="20dp" />
+                android:layout_height="fill_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:fontFamily="sans-serif-light"
-                android:layout_weight="1"
-                android:gravity="left|center_vertical"
-                android:paddingLeft="5dp"
-                android:text=">>>"
-                android:textColor="@android:color/white"
-                android:textSize="20dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="@string/go"
+                    android:textColor="@android:color/white"
+                    android:textSize="20dp" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:layout_height="fill_parent">
+
+                <ImageView
+                    android:id="@+id/arrowImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/choose_arrow_animation_0_v70"
+                    android:textColor="@android:color/white"
+                    />
+
+            </RelativeLayout>
+
 
         </LinearLayout>
 

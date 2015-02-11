@@ -19,6 +19,8 @@ public class VerifyEmail extends Activity implements View.OnClickListener{
     private TextView mEmail;
     private LinearLayout mGoBar;
     private RelativeLayout mGoButton;
+    private ImageView mArrowImageView;
+    private Thread mArrowThread;
 
     private void findViews() {
         mVerifyLayout = (RelativeLayout)findViewById( R.id.verifyLayout );
@@ -28,6 +30,7 @@ public class VerifyEmail extends Activity implements View.OnClickListener{
         mGoBar = (LinearLayout)findViewById( R.id.goBar );
         mGoButton = (RelativeLayout)findViewById( R.id.goButton );
         mGoButton.setOnClickListener(this);
+        mArrowImageView = (ImageView)findViewById(R.id.arrowImage);
     }
 
     @Override
@@ -44,6 +47,8 @@ public class VerifyEmail extends Activity implements View.OnClickListener{
 
         String email = GlobalHandler.readString(this,GlobalHandler.USER_EMAIL);
         mEmail.setText(email);
+
+        mArrowThread = GlobalHandler.arrowAnimation(this,mArrowImageView);
 
     }
 
@@ -76,9 +81,11 @@ public class VerifyEmail extends Activity implements View.OnClickListener{
         switch (id)
         {
             case R.id.verifyDelete:
+                GlobalHandler.finishArrowAnimation(mArrowThread);
                 VerifyEmail.this.finish();
                 break;
             case R.id.goButton:
+                GlobalHandler.finishArrowAnimation(mArrowThread);
                 break;
         }
     }

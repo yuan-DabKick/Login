@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
@@ -71,8 +72,11 @@ public class LoginActivity extends Activity implements View.OnClickListener,View
     private LinearLayout mGoBar;
     private TextView mTermOfServiceLink;
     private LinearLayout mGoButton;
+    private ImageView mArrowImage;
 
     private EditLocation mEditLocation;
+
+    private Thread mArrowThread;
 
     private void findViews() {
         mRelativeLayout = (RelativeLayout)findViewById( R.id.relativeLayout );
@@ -100,6 +104,8 @@ public class LoginActivity extends Activity implements View.OnClickListener,View
 
         mGoButton = (LinearLayout)findViewById( R.id.goButton );
         mGoButton.setOnClickListener(this);
+
+        mArrowImage = (ImageView)findViewById(R.id.arrowImage);
     }
 
 
@@ -124,7 +130,11 @@ public class LoginActivity extends Activity implements View.OnClickListener,View
                 bringGoBarToVisible();
             }
         });
+
+        mArrowThread = GlobalHandler.arrowAnimation(this,mArrowImage);
     }
+
+
 
     void bringGoBarToVisible(){
         Rect rect = GlobalHandler.getVisibleScreenRect(this);
@@ -136,6 +146,7 @@ public class LoginActivity extends Activity implements View.OnClickListener,View
         int id = v.getId();
         switch (id){
             case R.id.dismissBtn:
+                GlobalHandler.finishArrowAnimation(mArrowThread);
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 LoginActivity.this.startActivity(intent);
                 finish();
@@ -146,6 +157,7 @@ public class LoginActivity extends Activity implements View.OnClickListener,View
                 break;
 
             case R.id.forgotTextView:
+                GlobalHandler.finishArrowAnimation(mArrowThread);
                 intent = new Intent(LoginActivity.this,ForgotPassword.class);
                 LoginActivity.this.startActivity(intent);
                 break;
@@ -226,6 +238,8 @@ public class LoginActivity extends Activity implements View.OnClickListener,View
 
         return super.onOptionsItemSelected(item);
     }
+
+
 
     String appendUrlParams(String url,ArrayList<Pair> params)
     {
@@ -337,6 +351,8 @@ public class LoginActivity extends Activity implements View.OnClickListener,View
                         PreferenceHandler.setUserEmail(activity,mEmailField.getText().toString());
                         PreferenceHandler.setUserPassword(activity,mPasswordField.getText().toString());
                         PreferenceHandler.setFromJason(activity,jObject);
+
+                        GlobalHandler.finishArrowAnimation(mArrowThread);
 
                     } catch (JSONException e) {
                         e.printStackTrace();

@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -31,8 +32,8 @@ public class GlobalHandler {
     final static public String USER_PASSWORD = "userPassword";
     final static public String USER_EMAIL = "userEmail";
     final static public String PROFILE_PIC = "profile_pic.png";
-
-
+    final static public int GO_BAR_ARROW_ANIMATION_DURANT = 200;
+    static public Bitmap profileBitmap = null;
 
     static public int getNavigationBarHeight(Activity activity)
     {
@@ -196,6 +197,58 @@ public class GlobalHandler {
     static public void setUnderLine(TextView view)
     {
         view.setPaintFlags(view.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+    }
+
+    //match with arrowAnimation
+    static public void finishArrowAnimation(Thread arrowAnimThread)
+    {
+        if (arrowAnimThread == null)
+            return;
+
+        arrowAnimThread.interrupt();
+        while (arrowAnimThread.isAlive()){};
+    }
+
+    //match with finishArrowAnimation function
+    static public Thread arrowAnimation(final Activity activity, final ImageView imageView)
+    {
+        final int[] rid = new int[4];
+        rid[0] = R.drawable.choose_arrow_animation_0_v70;
+        rid[1] = R.drawable.choose_arrow_animation_1_v70;
+        rid[2] = R.drawable.choose_arrow_animation_2_v70;
+        rid[3] = R.drawable.choose_arrow_animation_3_v70;
+
+        final Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int index = 0;
+                while (true){
+
+                    try {
+                        Thread.sleep(GlobalHandler.GO_BAR_ARROW_ANIMATION_DURANT);
+                        final int i = index;
+                        activity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                imageView.setImageResource(rid[i]);
+                            }
+                        });
+                        index++;
+                        Log.d("test","thread");
+                        if (index == 4)
+                            index = 0;
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                        break;
+                    }
+
+                }
+            }
+        });
+
+        thread.start();
+
+        return thread;
     }
 }
 

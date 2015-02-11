@@ -73,8 +73,11 @@ public class SignupActivity extends Activity implements View.OnClickListener, Vi
     private LinearLayout mGoBar;
     private TextView mTermOfServiceLink;
     private LinearLayout mGoButton;
+    private ImageView mArrowImageView;
 
     private EditLocation mEditLocation;
+
+    private Thread mArrowThread;
 
     private void findViews() {
         mRelativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout);
@@ -106,6 +109,8 @@ public class SignupActivity extends Activity implements View.OnClickListener, Vi
 
         mGoButton = (LinearLayout) findViewById(R.id.goButton);
         mGoButton.setOnClickListener(this);
+
+        mArrowImageView = (ImageView) findViewById(R.id.arrowImage);
     }
 
 
@@ -134,7 +139,11 @@ public class SignupActivity extends Activity implements View.OnClickListener, Vi
             }
         });
 
+        mArrowThread = GlobalHandler.arrowAnimation(this, mArrowImageView);
+
     }
+
+
 
     void bringGoBarToVisible() {
         Rect rect = GlobalHandler.getVisibleScreenRect(this);
@@ -143,10 +152,21 @@ public class SignupActivity extends Activity implements View.OnClickListener, Vi
     }
 
     @Override
+    public void onDestroy(){
+        super.onDestroy();
+
+
+
+    }
+
+    @Override
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
             case R.id.dismissBtn:
+
+                GlobalHandler.finishArrowAnimation(mArrowThread);
+
                 Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                 SignupActivity.this.startActivity(intent);
                 finish();
@@ -155,6 +175,7 @@ public class SignupActivity extends Activity implements View.OnClickListener, Vi
                 goBtnClickAction();
                 break;
             case R.id.forgotTextView:
+                GlobalHandler.finishArrowAnimation(mArrowThread);
                 intent = new Intent(SignupActivity.this, ForgotPassword.class);
                 SignupActivity.this.startActivity(intent);
                 break;
@@ -224,10 +245,10 @@ public class SignupActivity extends Activity implements View.OnClickListener, Vi
                     mGoBar.setVisibility(View.VISIBLE);
 
                     //if forgot password text is blocked , we should scroll up
-                    float passwordBtnY = mPasswordField.getY() - mLoginScrollView.getScrollY()+mPasswordField.getHeight();
+                    float passwordBtnY = mPasswordField.getY() - mLoginScrollView.getScrollY() + mPasswordField.getHeight();
                     float diff = passwordBtnY - mGoBar.getY();
                     if (diff > 0 || Math.abs(diff) < 2 * mPasswordField.getHeight()) {
-                        float move = 2*mPasswordField.getHeight() + diff;
+                        float move = 2 * mPasswordField.getHeight() + diff;
                         mLoginScrollView.smoothScrollBy(0, (int) move);
                     }
 
@@ -281,8 +302,9 @@ public class SignupActivity extends Activity implements View.OnClickListener, Vi
 
             new SignupTask().execute(Params);
 
-        } else
+        } else {
             editText.requestFocus();
+        }
     }
 
     public boolean isValidEmail(String emailString) {
@@ -370,11 +392,12 @@ public class SignupActivity extends Activity implements View.OnClickListener, Vi
                         if (status == "ok" || true) {
 
                             Activity activity = SignupActivity.this;
-                            PreferenceHandler.setLogin(activity,true);
-                            PreferenceHandler.setUserName(activity,(String) object.get("name"));
-                            PreferenceHandler.setUserEmail(activity,(String) object.get("email"));
-                            PreferenceHandler.setUserPassword(activity,(String) object.get("password"));
+                            PreferenceHandler.setLogin(activity, true);
+                            PreferenceHandler.setUserName(activity, (String) object.get("name"));
+                            PreferenceHandler.setUserEmail(activity, (String) object.get("email"));
+                            PreferenceHandler.setUserPassword(activity, (String) object.get("password"));
 
+                            GlobalHandler.finishArrowAnimation(mArrowThread);
                             Intent intent = new Intent(SignupActivity.this, ProfilePictureActivity.class);
                             SignupActivity.this.startActivity(intent);
 

@@ -97,13 +97,13 @@
                 android:layout_weight="1"
                 android:background="@color/goBackgroundColor">
 
-                <TextView
+                <ImageView
+                    android:id="@+id/arrowImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:fontFamily="sans-serif-light"
-                    android:text=">>>"
+                    android:src="@drawable/choose_arrow_animation_0_v70"
                     android:textColor="@android:color/white"
                     android:textSize="20dp" />
 
